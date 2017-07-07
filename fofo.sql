@@ -1,0 +1,8 @@
+/*CREATE DATABASE forum;*/
+
+CREATE TABLE utilisateur(
+	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	username VARCHAR(255),
+    pword VARCHAR(255),
+    email VARCHAR(255)
+)engine=InnoDB;
