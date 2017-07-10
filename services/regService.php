@@ -45,7 +45,8 @@ else{
 }
 if($erreur == true){
     /* Alfonso: essaie de faire un die après chaque header(); */
-    header("location: ../index.php?page=login&controle=failed");    
+    header("location: ../index.php?page=login&controle=failed");
+    die();
 }
 else{
     header("location: ../index.php?page=principal&controle=success");    

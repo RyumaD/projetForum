@@ -23,7 +23,6 @@
           <br>
           <label>Pseudo</label><input name="username" type="text"/>
           <label>Mot de passe</label><input name="password" type="password"/>
-          <label>email</label><input name="email" type="texte"/>
           <!--<label>Save ??? <input type="checkbox" name="cookie"></label>-->
           <input type="submit" value="Here we go!"/>
       </form>

@@ -1,8 +1,14 @@
 /*CREATE DATABASE forum;*/
 
-CREATE TABLE utilisateur(
+/*CREATE TABLE utilisateur(
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(255),
     pword VARCHAR(255),
     email VARCHAR(255)
+)engine=InnoDB;*/
+
+CREATE TABLE message(
+	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(255),
+    texte VARCHAR(255)
 )engine=InnoDB;

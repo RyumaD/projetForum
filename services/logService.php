@@ -3,11 +3,8 @@ include_once("../model/fonctions.php");
 $erreur = false;
 $username = trim($_POST["username"]);
 $password = trim($_POST["password"]);
-$email = trim($_POST["email"]);
 $usr = verifusername($username);
-$mail = verifemail($email);
-$pass = verifpassword($password);
-
+$log = veriflogin($password, $username);
 /*
  * Alfonso: Tu as compris très vite le fonctionnement de notre petit
  * système MVC. Tu as bien exécuté l'application des fonction dans le
@@ -17,12 +14,20 @@ $pass = verifpassword($password);
  * Je vais te compliquer la tache en te disant qu'il faut l'un ou l'autre
  * et pas les deux. Je pense que tu peux faire ça.
  * */
+if(empty($log)){
+    $erreur = true;
+}
+else{
+   $id = $log[0]['id']; 
+}
 
-if(isset($username) AND isset($password) AND isset($email)){
-    if(count($usr)>= 1 AND count($mail)>= 1 AND count($pass)>= 1){
+if(isset($username) AND isset($password) AND $erreur == false){
+    if($id >= 1){   
         header("location: ../index.php?page=principal&controle=success");
+        session_start();
+        $_SESSION["profil"]=$username;
+        die();
     }
 }
 header("location: ../index.php?page=login&controle=failed");
-
- ?>
+?>

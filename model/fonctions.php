@@ -10,7 +10,8 @@ function getconnexion(){
 function getPage(){
   if(isset($_GET['page'])){
     $page = $_GET['page'];
-  }else{
+  }
+  else{
     $page = "login";
   }
   return $page;
@@ -24,13 +25,6 @@ function getFeedback(){
   return $control;
 }
 
-function getUser(){
-   
-}
-
-function getUtilisateurs(){
-
-}
 function verifusername($username){
   $connexion = getconnexion();
   $pdo = $connexion->prepare('SELECT username FROM utilisateur WHERE username=:username');
@@ -38,6 +32,7 @@ function verifusername($username){
   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
   return $user;
 }
+
 function verifemail($email){
   $connexion = getconnexion();
   $pdo = $connexion->prepare('SELECT email FROM utilisateur WHERE email=:email');
@@ -45,10 +40,13 @@ function verifemail($email){
   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
   return $user;
 }
-function verifpassword($password){
+
+function veriflogin($password, $username){
   $connexion = getconnexion();
-  $pdo = $connexion->prepare('SELECT pword FROM utilisateur WHERE pword=:password AND ');
-  $pdo->execute(array('password'=>$password));
+  $pdo = $connexion->prepare('SELECT id FROM utilisateur WHERE pword=:password AND username=:username');
+  $pdo->execute(array(
+    'username'=>$username,
+    'password'=>$password));
   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
   return $user;
 }

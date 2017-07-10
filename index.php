@@ -8,16 +8,8 @@
         break;
 
       case 'principal':
-        /*$user = getUser();
-        $description = getDescription();*/
         include("views/principal.php");
         break;
-
-      /*case "formulaire":
-        $feedback = getFeedback();
-        $nombreUtilisateur = getNombreUtilisateurs();
-        include("views/formulaire.php");
-        break;*/
     }
 
  ?>
