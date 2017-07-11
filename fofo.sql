@@ -7,15 +7,15 @@
     email VARCHAR(255),
     photo VARCHAR(255)
 )engine=InnoDB;
-
+*/
 CREATE TABLE message(
     user VARCHAR(255),
     datecreate DATETIME,
     titre VARCHAR(255),
     texte VARCHAR(255),
     zone VARCHAR(255)
-)engine=InnoDB;*/
-
+)engine=InnoDB;
+/*
 CREATE TABLE repmessage(
     user VARCHAR(255),
     datecreate DATETIME,
