@@ -49,6 +49,8 @@ if($erreur == true){
     die();
 }
 else{
+    session_start();
+    $_SESSION["profil"]=$username; 
     header("location: ../index.php?page=principal&controle=success");    
 }
 ?>
