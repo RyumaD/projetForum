@@ -1,0 +1,35 @@
+Alfonso:
+
+Dans ton SQL, par exemple dans la table user tu dois inclure absolument
+
+un ID pour que les utilisateurs soit identifiés. On ne prend pas l'email
+ou le pseudo pour ça il faut absolument un id
+
+Cet id nous servira pour identifier d'ou viennent les posts et messages
+des postes (réponses des posts)
+
+par exemple
+
+
+
+
+CREATE TABLE `message` (
+  `id` INT(255) AUTO_INCREMENT NOT NULL,
+  `user` varchar(255) DEFAULT NULL,
+  `datecreate` datetime DEFAULT NULL,
+  `titre` varchar(255) DEFAULT NULL,
+  `texte` varchar(255) DEFAULT NULL,
+  `zone` varchar(255) DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `repmessage` (
+  `user` varchar(255) DEFAULT NULL,
+  `datecreate` datetime DEFAULT NULL,
+  `texte` varchar(255) DEFAULT NULL,
+  `zone` varchar(255) DEFAULT NULL,
+  `topic` varchar(255) DEFAULT NULL
+  `userId` INT(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

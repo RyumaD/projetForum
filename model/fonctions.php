@@ -25,6 +25,23 @@ function getFeedback(){
   return $control;
 }
 
+/*
+ * Alfonso: bien pour les appels en base de données
+ * Par contre pour les showing j'en aurais fait des vues
+ *
+ * et il faut faire des appels en base de données depuis le controlleur
+ *
+ * par exemple dans le switch du controleur:
+ *
+ * case "postShow":   // la page qui montre un poste avec ses réponses
+ *      $messages = getMessagesBYPost() // chez toi posting()
+ *      include("views/topic.php");
+ *      break;
+ *
+ * et c'est dans le templates que tu inlcus la partie html
+ *
+ * */
+
 function verifusername($username){
   $connexion = getconnexion();
   $pdo = $connexion->prepare('SELECT username FROM utilisateur WHERE username=:username');
