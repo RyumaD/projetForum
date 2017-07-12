@@ -1,0 +1,60 @@
+body{
+    background-image: url("fofo.jpg");
+    background-size: cover;
+    margin: 0;
+}
+nav{
+    display:flex;
+    position: fixed;
+    justify-content: space-around;
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    margin-top: -10px;
+}
+section{
+    position: absolute;
+    top:15%;
+    left: 45%;
+    text-align: center;
+    background-color: white;
+    opacity: 0.8;
+    padding: 50px;
+}
+h1{
+    font-size: 3em;
+}
+form{
+    display:flex;
+    flex-direction: column;
+    
+}
+form input{
+    margin-bottom: 10px;
+    margin-top:  10px;
+}
+.grey{
+    /*background-color: grey;*/
+}
+.blue{
+    /*background-color: palevioletred;*/
+}
+.red{
+    /*background-color: palevioletred;*/
+}
+#ase{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    background-color:darkcyan;
+}
+#h2{
+    background-color: darkcyan;
+}
+#h3{
+ background-color: firebrick;
+}
+#full{
+    border: 3px solid black;
+    background-color: firebrick;
+}

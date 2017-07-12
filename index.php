@@ -8,10 +8,16 @@
         break;
 
       case 'principal':
+        $classe = showing('Classe');
+        $histoire = showing('Histoire');
         include("views/principal.php");
         break;
 
       case 'area':
+        $zone = $_GET["zone"];
+        $topic = $_GET["topic"];
+        $msg = $_GET['msg'];
+        $message = showing2($zone,$topic);
         include("views/area.php");
         break;
       

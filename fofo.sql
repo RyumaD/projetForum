@@ -9,17 +9,19 @@
 )engine=InnoDB;
 */
 CREATE TABLE message(
+	id INT(255) AUTO_INCREMENT NOT NULL  PRIMARY KEY,
     user VARCHAR(255),
     datecreate DATETIME,
     titre VARCHAR(255),
     texte VARCHAR(255),
     zone VARCHAR(255)
 )engine=InnoDB;
-/*
+
 CREATE TABLE repmessage(
     user VARCHAR(255),
     datecreate DATETIME,
     texte VARCHAR(255),
     zone VARCHAR(255),
-    topic VARCHAR(255)
+    topic VARCHAR(255),
+    userId INT(255) NOT NULL
 )engine=InnoDB;

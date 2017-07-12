@@ -25,22 +25,49 @@ function getFeedback(){
   return $control;
 }
 
-/*
- * Alfonso: bien pour les appels en base de données
- * Par contre pour les showing j'en aurais fait des vues
- *
- * et il faut faire des appels en base de données depuis le controlleur
- *
- * par exemple dans le switch du controleur:
- *
- * case "postShow":   // la page qui montre un poste avec ses réponses
- *      $messages = getMessagesBYPost() // chez toi posting()
- *      include("views/topic.php");
- *      break;
- *
- * et c'est dans le templates que tu inlcus la partie html
- *
- * */
+function register($username,$email,$password){
+  $connexion = getconnexion();
+  $pdo = $connexion->prepare('INSERT INTO utilisateur SET username=:username, pword=:pword, email=:email ');
+  $pdo->execute(array(
+          'username'=>$username,
+          'pword' => $password,
+          'email'=>$email
+  ));
+  $result = $pdo->rowCount();
+}
+function reponseTopic($user,$txt,$zone,$topic){
+    $connexion = getconnexion();
+    $pdo = $connexion->prepare('INSERT INTO repmessage SET user=:user, datecreate=NOW(), texte=:texte, zone=:zone, topic=:topic');
+    $pdo->execute(array(
+            'user' => $user,
+            'texte'=>$txt,
+            'zone'=>$zone,
+            'topic'=>$topic
+    ));
+    $result = $pdo->rowCount();
+}
+function topicService($user,$titre,$txt,$zone){
+    $connexion = getconnexion();
+    $pdo = $connexion->prepare('INSERT INTO message SET user=:user, datecreate=NOW(), titre=:titre, texte=:texte, zone=:zone');
+    $pdo->execute(array(
+            'user' => $user,
+            'titre'=>$titre,
+            'texte'=>$txt,
+            'zone'=>$zone
+    ));
+    $result = $pdo->rowCount();
+}
+function supprMessage($user,$txt,$zone,$topic){
+    $connexion = getconnexion();
+    $pdo = $connexion->prepare('DELETE FROM repmessage WHERE user=:user AND texte=:texte AND zone=:zone AND topic=:topic');
+    $pdo->execute(array(
+            'user' => $user,
+            'texte'=>$txt,
+            'zone'=>$zone,
+            'topic'=>$topic
+    ));
+    $result = $pdo->rowCount();
+}
 
 function verifusername($username){
   $connexion = getconnexion();
@@ -54,6 +81,14 @@ function verifemail($email){
   $connexion = getconnexion();
   $pdo = $connexion->prepare('SELECT email FROM utilisateur WHERE email=:email');
   $pdo->execute(array('email'=>$email));
+  $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
+  return $user;
+}
+
+function checkemail($username){
+  $connexion = getconnexion();
+  $pdo = $connexion->prepare('SELECT email FROM utilisateur WHERE username=:username');
+  $pdo->execute(array('username'=>$username));
   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
   return $user;
 }
@@ -78,14 +113,10 @@ function posting($zone){
 function showing($zone){
   $show = posting($zone);
   if($show == NULL){
+    return 0;
   }
   else{
-    $i=0;
-    foreach ($show as $key => $value) {
-      $yo = $show[$i]['titre'];
-      echo "<a href='index.php?page=area&zone=$zone&topic=$yo'>".$yo."</a><br>";
-      $i++;
-    }
+    return $show;
   }
 }
 function posting2($zone,$topic){
@@ -99,24 +130,10 @@ function posting2($zone,$topic){
 function showing2($zone,$topic){
   $show = posting2($zone,$topic);
   if($show == NULL){
+    return 0;
   }
   else{
-    $i=0;
-    foreach ($show as $key => $value) {
-      $usr = $show[$i]["user"];
-      $date = $show[$i]["datecreate"];
-      $txt = $show[$i]["texte"];
-      echo "<p>$usr</p><p>$date</p><p>$txt</p><br>";
-      echo "<form action='services/supprService.php' method='post'>
-                <input type='hidden' name='user' value=$usr>
-                <input type='hidden' name='datecreate' value=$date>
-                <input type='hidden' name='texte' value=$txt>
-                <input type='hidden' name='zone' value=$zone>
-                <input type='hidden' name='topic' value=$topic>
-                <input type='submit' id='suppr' value='delete'>
-            </form>";
-      $i++;
-    }
+    return $show;
   }
 }
 ?>

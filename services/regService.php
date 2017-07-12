@@ -25,14 +25,7 @@ if(isset($username) AND isset($password) AND isset($confpword) AND isset($email)
              * */
                 if(strlen($password) > 8 AND $password == $confpword AND strlen($username) > 4){
                         if(preg_match('#^[\w.-]+@[\w.-]+\.[a-z]{2,6}$#i', $email)){
-                                $connexion = getconnexion();
-                                $pdo = $connexion->prepare('INSERT INTO utilisateur SET username=:username, pword=:pword, email=:email ');
-                                $pdo->execute(array(
-                                        'username'=>$username,
-                                        'pword' => $password,
-                                        'email'=>$email
-                                ));
-                                $result = $pdo->rowCount();
+                                register($username,$email,$password);
                         }
                 }
                 else{
@@ -44,7 +37,6 @@ else{
         $erreur = true; 
 }
 if($erreur == true){
-    /* Alfonso: essaie de faire un die après chaque header(); */
     header("location: ../index.php?page=login&controle=failed");
     die();
 }

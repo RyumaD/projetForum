@@ -1,0 +1,25 @@
+nav{
+    display:flex;
+    position: fixed;
+    justify-content: space-around;
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    margin-top: -10px;
+}
+body{
+    background-image: url("profil.jpg");
+    margin: 0;
+}
+section{
+    position: fixed;
+    top:15%;
+    left: 45%;
+    text-align: center;
+    background-color: white;
+    opacity: 0.8;
+    padding:50px;
+}
+h1{
+    font-size: 2em;
+}

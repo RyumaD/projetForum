@@ -31,5 +31,7 @@ CREATE TABLE `repmessage` (
   `texte` varchar(255) DEFAULT NULL,
   `zone` varchar(255) DEFAULT NULL,
   `topic` varchar(255) DEFAULT NULL
-  `userId` INT(255) NOT NULL
+  `userId` INT(255) NOT NULL,
+
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

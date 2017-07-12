@@ -6,7 +6,8 @@
     <title>LOGIN</title>
   </head>
   <body>
-    <h1>Login Page</h1>
+    <h1>Monster Hunter</h1>
+    <h2>World</h2>
     <section>
       <form method="post" action="services/regService.php" name="insc">
           <h2>Inscrit toi</h2>

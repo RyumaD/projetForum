@@ -1,5 +1,6 @@
 body{
     width:100%;
+    background-image: url("world.jpg");
 }
 section{
     width: 100%;
@@ -13,8 +14,12 @@ form{
     border: 3px solid black;
     padding: 30px;
     padding-top: 10px;
+    background-color: white;
 }
 input{
     margin-top: 5px;
     margin-bottom: 5px;
+}
+h1,h2{
+    text-align: center;
 }
